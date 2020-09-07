@@ -1,7 +1,7 @@
 <table>
  <tr>
   <td>
-  <strong>Name</strong>: Ahmad Pouramini
+  <strong>Name:</strong> Ahmad Pouramini
   </td>
   <td rowspan="5">
    <img src="https://github.com/puraminy/resume/raw/master/Ax.jpg" height=280 width=250 />
@@ -24,7 +24,7 @@ Email: pouramini@gmail.com
  </tr>
  <tr>
   <td>
-   **Address:** Department of Computer Engineering
+   <strong>Address:</strong> Department of Computer Engineering
    
 Sirjan University of Technology
 
