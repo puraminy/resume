@@ -1,11 +1,43 @@
 
-- **Name**: Ahmad Pouramini
-- Department of Computer Engineering
-- Sirjan University of Technology
-- Tehran, Iran
-- Data of Birth: 1979
-- Tel: +98 (913) 3923475
-- Email: pouramini@gmail.com
+<table>
+ <tr>
+  <td>
+  **Name**: Ahmad Pouramini
+  </td>
+  <td rowspan=5>
+   ![ahmad pouramini](https://github.com/puraminy/resume/raw/master/Ax.jpg) 
+  </td>
+ </tr>
+  
+  
+ 
+  <tr>
+  <td>
+Data of Birth: 1979
+   </td>
+ </tr>
+  <tr>
+  <td>
+Tel: +98 (913) 3923475
+   </td>
+ </tr>
+  <tr>
+  <td>
+Email: pouramini@gmail.com  
+   </td>
+ </tr>
+ <tr>
+  <td>
+   **Address:** Department of Computer Engineering
+   
+Sirjan University of Technology
+
+Sirjan, Iran
+  </td>
+ </tr>
+  
+ </tr>
+  </table>
 
 
 # EDUCATION
