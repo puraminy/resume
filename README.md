@@ -1,17 +1,13 @@
-
 <table>
  <tr>
   <td>
-  **Name**: Ahmad Pouramini
+  <strong>Name</strong>: Ahmad Pouramini
   </td>
-  <td rowspan=5>
-   ![ahmad pouramini](https://github.com/puraminy/resume/raw/master/Ax.jpg) 
+  <td rowspan="5">
+   <img src="https://github.com/puraminy/resume/raw/master/Ax.jpg" height=280 width=250 />
   </td>
  </tr>
-  
-  
- 
-  <tr>
+ <tr>
   <td>
 Data of Birth: 1979
    </td>
@@ -189,7 +185,3 @@ Assistant Professor, Computer Engineering Department of Iran University of Scien
 Azadi Ave., P.O. Box: 11365-8639, Tehran, Iran
 Email: peyman.kabiri@iust.ac.ir	Tel: +98 (21) 77240540
 Webpage: http://webpages.iust.ac.ir/peyman.kabiri/
-
-
-
-
