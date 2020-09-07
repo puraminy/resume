@@ -1,11 +1,11 @@
 
-**Name**: Ahmad Pouramini
-Department of Computer Engineering
-Sirjan University of Technology
-Tehran, Iran
-Data of Birth: 1979
-Tel: +98 (913) 3923475
-Email: pouramini@gmail.com
+- **Name**: Ahmad Pouramini
+- Department of Computer Engineering
+- Sirjan University of Technology
+- Tehran, Iran
+- Data of Birth: 1979
+- Tel: +98 (913) 3923475
+- Email: pouramini@gmail.com
 
 
 # EDUCATION
