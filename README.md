@@ -1,189 +1,60 @@
-<table>
- <tr>
-  <td>
-  <strong>Name:</strong> Ahmad Pouramini
-  </td>
-  <td rowspan="6">
-   <img src="https://github.com/puraminy/resume/raw/master/Ax.jpg" height=280 width=250 />
-  </td>
- </tr>
- <tr>
-  <td>
-Data of Birth: 1979
-   </td>
- </tr>
-  <tr>
-  <td>
-Tel: +98 (913) 3923475
-   </td>
- </tr>
-  <tr>
-  <td>
-Email: pouramini@gmail.com  
-   </td>
- </tr>
- <tr>
-  <td>
-   <strong>Address:</strong> <br /> 
-   Department of Computer Engineering, </br />
-   
-Sirjan University of Technology <br />
 
-Sirjan, <br /> Iran
-  </td>
- </tr>
-  <tr>
-  <td></td>
- </tr>
-  </table>
+# Composing Answer from Multi-spans for Reading Comprehension
+## Abstract
+This paper presents a novel method to generate answers for non-extraction machine reading comprehension (MRC) tasks whose answers cannot be simply extracted as one span from the given passages. Using a pointer network-style extractive decoder for such type of MRC may result in unsatisfactory performance when the ground-truth answers are given by human annotators or highly re-paraphrased from parts of the passages. On the other hand, using generative decoder cannot well guarantee the resulted answers with well-formed syntax and semantics when encountering long sentences. Therefore, to alleviate the obvious drawbacks of both sides, we propose an answer making-up method from extracted multi-spans that are learned by our model as highly confident $n$-gram candidates in the given passage. That is, the returned answers are composed of discontinuous multi-spans but not just one consecutive span in the given passages anymore....
 
+## Introduction
+The task of Machine Reading Comprehension is to generate or extract an answer for a question according to given passages . MRC tasks essentially differ from each other according to the form of their required answers. We have two general categories of MRC tasks, extraction and non-extraction, which are thus respectively solved by extractive and generative decoders in MRC models. So far, the extraction-style MRC tasks along with their datasets and leaderboards have been well-developed . As the answer for this type is shown as a span 
+appearing in the given passage, sometimes, such an MRC task is called span-style.
 
-# EDUCATION
-### 2018-present
-Ph.D. in Artificial Intelligence 
-**Tehran University**, the top-ranked university of Iran, Tehran, Iran. 
-Supervisor: Dr. Hesham Faili (hfaili@ut.ac.ir)
+For example, MS MARCO requires the MRC models to generate an answer for the question according to the given redundant passages.
 
-### 2002-2005
-M.Sc. in Artificial Intelligence
-**Iran University of Science and Technology** (IUST), the third-ranked technical university of Iran, Tehran, Iran,
-*Thesis Title*: Design of a Heuristic Method for Automatic Extraction of a Persian LTAG
+Answers in extraction or span-style MRC tasks are located somewhere of its given passage; therefore, pointer network as a typical extractive decoder for such an answer position prediction has been widely employed.
 
-*Thesis Supervisor*: Dr. Nasser Mozayani
-Webpage: http://webpages.iust.ac.ir/mozayani/
+To alleviate the drawbacks of both types of decoders, in this paper, we propose a novel solution to the non-extraction MRC tasks by making up answers from extracted spans.
 
-### 1997-2002
-B.Sc. in Computer Engineering, Major: Software Engineering
-**Sharif University of Technology**, the top-ranked technical university of Iran, Tehran, Iran
+All the possible candidate spans will be picked to compose the final answer in their original order in the passage. Experiments on MS MARCO dataset show that the proposed method substantially outperforms two competitive typical one-span and Seq2Seq baseline decoders, and has a better performance on accurately generating long answers.
 
-Thesis Title: Design of a Parser Generator for ALALL (1), Asserted Look Ahead LL (1) Grammar
-Thesis Supervisor: Dr. Ghassem JaberiPour
+## Related Work
+With the development of deep learning, the research of machine reading comprehension has made great progress. At the same time, various types of reading comprehension tasks require suitable targeted solutions.
 
-Relevant Course work: Compiler Construction, Computer Arithmetic WebPage: http://faculties.sbu.ac.ir/~jaberipur/index.html
+SQuAD2 asks models to judge whether the question is answerable according to the given passage, and hotpotQA needs the model to find and reason over multiple supporting documents. Non-extraction style MRC tasks like Dureader and MS MARCO are required to generate an answer according to the given context and question.
 
-## FIELDS OF INTEREST
-Artificial Intelligence:
+The cloze-style MRC like CNN/ Daily Mail (Hermann 
+et al. 2015) is to predict a masked word in a given passage.2.
 
- - Natural Language Processing
- - Machine Learning
- - Reinforcement Learning
- - Pattern Recognition
- - Software Design 
+The multi-choice style MRC like RACE requires models to choose a correct answer from a set of answer candidate options. In this paper, we focus on the generative style MRC, which, though it belongs to the type of non-extraction, still keeps strong enough answer clues inside the given passage.
 
-## HONORS AND AWARDS 
+The former adopts contextualized language models , and the latter should be carefully selected according to the answer form of the task type, which is our major focus in this paper.
 
-- Rank of 12 in "Nation-wide Ph.D Examinations" in Computer Engineering, Iran, 2018.
-- Rank of 130 in "Nation-wide Graduate Examinations" in Computer Engineering, Iran, 2002.
-- Rank of 43 in "Nation-wide Undergraduate Examinations" in Mathematics and Physics Branch, Iran, 1997.
-- Rank of 2 in "State-wide Physics Olympiad" in Mathematics and Physics Branch, Iran, 1996.
-- First Rank of High-School diploma, Shahre-Babak, Iran, 1999.
+On the other hand, researchers also seek help from generative models such as Seq2Seq and Pointer-Generator Networks , which help generate answers directly. Tan et al. developed an extraction-then-synthesis framework to synthesize answers from extraction results, which used a pointer network to extract span from a passage, and then adopted a Seq2Seq model to generate answers .
 
-## SKILLS 
+## Method
+Recent MRC systems often share a similar option by adopting pre-trained CLMs as the encoder but still differs from the decoder part. Following the general model design, the overview of our model is illustrated in Figure 1. Different from existing pointer network modeling, in which only two boundary words for one span in the passage need to learn and predict, our model is to compose the answer from multiple spans. Thus, we first need to label the answer spans in the text of passage according to the gold answer.
 
-- *Computer Programming*: Visual C# .Net, Python, Java, JavaScript, PHP, C++, Prolog
-- *Software Development Methodologies*: USDP, RUP Analysis & Design Tools: UML, ERD, DFD
-- *Environments and tools*: Visual Studio .NET, MATLAB, Linux, VIM, Tex, MySql, IntelliJ IDEA, Microsoft Office, Adobe Dream weaver,  Windows 98-XP, OPC servers
+The predicted answer will also be composed by simply concatenating all the predicted spans in their original order in the passage.
 
+Our decoder is hereafter called multi-span decoder to easily distinguish from the pointer network decoder, which only extracts one span as the answer.
 
-## RESEARCH EXPERIENCE
+We attribute such a negative result to the ignorance of answer spans by this word-level decoding strategy.
 
-### 2019i- present:
- Ph.D. student of Tehran university, preparing for Ph.D. thesis in natural language processing, mainly QA and reading comprehension systems. I did various course and research projects mainly in **python**
+Syntactic Spans To limit the n-gram spans for scoring 
+with linguistic meaning, we introduce a syntactic constituent parse tree to pick reasonable spans from passages. Using a pre-trained parser may give a constituent parse tree for each input sentence. Then, each subtree in the parse tree can determine a phrase or constituent in the sentence, whose length may vary from 1 to the sentence length.
 
-### Summer 2005
-IUST University, IT Center, *Supervisor*: Prof. N. Mozayani.
-Research Assistant, the Manager of a Research Group 
-**Project description**: Design and implementation of an annotation scheme for a Persian Treebank.
+## Experiment
+Ten passages are provided for answering a question, and not every passage contains clues for answering the question. There are also non-answerable questions in the dataset, which means all the given passages do not contain any helpful clue to answer the question. To let the evaluation over our proposed method have a specific focus, we extract an answerable subset of MS MARCO for our main evaluation, which includes all answerable questions and question-related passages. Thus for most experiments in this paper, the passage ranker as another extra factor is not necessary then to avoid additional influential factors. In addition, we split the official development set into two parts to be our development and test sets for evaluating our model.
 
-### Winter 2005
-IUST University, IT Center, *Supervisor*: Prof. M. Fathi.
-Research Assistant,
-**Project description**:3D object modeling using wavelet transform
+The official evaluation script provided by MS MARCO is used for our evaluation.
 
-### Summer 2003
+As shown in Table 3, our multi-span decoders in terms of proper span settings perform better than one-span decoder and much better than generative decoder on all the evaluating metrics.
 
-[Douran Data Processing Co](http://douran.com), *Supervisor*: Prof. Hesham Faili. 
-Research Assistant, the Leader of a Research Group 
-**Project description**: Design and implementation of a Persian machine translator basted on XTAG grammar and statistical models.
+Especially, our syntactic span decoder gives the highest scores in both BLEU and ROUGE-L for answer length 21-25 and nearly the highest scores for all answers, which are longer than 25.
 
-### Summer 2002
+As the complete MS MARCO Q&A task provides several passages for one question, which needs an extra passage selection or ranking module, we simply re-implement the Passage Ranker described in Nishida et al.
 
-Advanced Information and Communication Technology Research Summer 2001 Center ([AICTC](http://www.aictc.ir)), Prof. [HamidReza Rabiee](http://sharif.ir/~rabiee/)
-Research Assistant, a Member of Research Group in a Team to  Design and Implementation of an E-Learning Software for audio and  video communication.   
+The benefit has to come from our multi-span decoder, especially for better handling of long answers according to our analysis above.
 
+## Conclusion
+For generative machine reading comprehension, previous work struggled in choosing a one-span extractive decoder or loose Seq2Seq decoder. Therefore in this work, we propose a novel multi-span decoding method to compromise such a dilemma by inspired that even generative answers can be composed of discontinuous multiple spans in the given passages. In detail, our proposed model determines candidate spans in the passage, and then all the candidate spans are connected together with their appearance order in the original passage to compose the final answer. Experiment results show that our model outperforms mainstream onespan/generative decoders on the MS MARCO benchmark. Especially, our models have a better performance on accurately generating long answers.
 
-## TEACHING EXPERIENCE
-
-Sirjan University of Technolgy, Computer Engineering Department, Sirjan, Iran
-
-Instructor of different courses, including:
-
-- Artificial Intelligence
-- Algorithm Analysis and Design
-- Theory of Computation
-- Introduction to Automata Theory, Languages, and Computation
-- Compiler Design and Construction
-- Data Structures
-- Database Systems
-- Internet Engineering
-- System Programming
-
-### 2008-2010
-Azad University of ShahreBabak, ShahreBabak, Iran
-Instructor of 3 complete courses.
-
-- Internet Engineering.
-- Computer Fundamentals.
-- C++ Programming.
-
-## PUBLICATIONS AND PRESENTATIONS
-Over 15 papers in different subjects:
-Please refer to my profile at Google Scholar: https://scholar.google.ro/citations?hl=en&pli=1&user=bzha0GQAAAAJ
-
-
-## WORK EXPERIENCES
-
-### Fall 2007-2010
-
-Working at **[GoleGohar](http://www.geg.ir/)** Company, Sirjan, Iran, as an employee for ABB Control system, mainly the Knowledge manager system, IT Consultant, Implementing image processing software to defect detection
-
-### Spring 2003-Spring 2004
-
-Working at Kiyan Noor Company, Tehran, Iran, as a developer of a POS system for **[Torex Retail Company](http://torex.com)** named **[Lucas](http://www.torex.com/global/retail/productsservices/solutions/lucaspos)**, which is one of the main products of Torex Retail company. Beside my work in Tehran, I worked three months (Spetember 2003-Decmber 2003) under direct supervision of **Logware** Company, the German division of Torex in Berlin
-
-The Project description: 
-
-## Language Skill
-
-**Persian**: Native, English: Fluent
-**Tolimo** : 565/677 (Test data, 2020)
-**iBT TOEFL** (Test date: June. 2010)
-Total grade: 92/120 
-
-
-## REFERENCES
-
-* Professor Hesham Faili
-Assistant Professor, School of Electrical & Computer Engineering, Tehran University, Tehran, Iran, My supervisor for my researches at Douran research center
-Email: hfaili@ut.ac.ir
-Webpage: http://ece.ut.ac.ir/faculty/Faili
-
-* Professor Nassar Mozayani
-Assistant Professor, Computer Engineering Department of Iran University of Science and Technology, My Graduate Thesis Supervisor
-Hengam Street, Resalat Square, Narmak, Tehran, Iran, Zip Code: 16846-13114
-Email mozayani@iust.ac.ir	Tel: +98 (21) 77240391
-Webpage: http://webpages.iust.ac.ir/mozayani/
-
-<hr>
-
-* Professor Ghassem Jaberipur
-Associate Professor, Electrical & Computer Engineering Dept. Shahid Beheshti University (SBU), My Undergraduate Thesis supervisor ast Sharif University of Technology Evin, Tehran, 19839-63113, Iran
-Email: Jaberipur@SBU.ac.ir Tel: +98 21 29902285 (Sat.-Mon. @ SBU), +98 21 22287013, Ext. 2133 (Tue.-Thu. @ IPM) Webpage: http://faculties.sbu.ac.ir/~jaberipur/
-
-<hr>
-
-* Professor Peyman Kabiri
-Assistant Professor, Computer Engineering Department of Iran University of Science and Technology, My Instructouin Robotics course Hengam Street, Resalat Square, Narmak, Tehran, Iran
-Azadi Ave., P.O. Box: 11365-8639, Tehran, Iran
-Email: peyman.kabiri@iust.ac.ir	Tel: +98 (21) 77240540
-Webpage: http://webpages.iust.ac.ir/peyman.kabiri/
+https://arxiv.org/pdf/2009.06141.pdf
